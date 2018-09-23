@@ -1,0 +1,16 @@
+{% load staticfiles %}
+{% extends 'weeklypicks/base.html' %}
+{% block title %}Weekly Football Picks{% endblock %}
+
+{% block content %}
+		<h1>Weekly Football Picks</h1>
+		<ul>
+            {% for user in users %}
+				<li>
+					<a href="{% url 'pick' user.id %}">{{ user }}</a>
+				</li>
+            {% empty %}
+                <li>No Players.</li>
+			{% endfor %}
+		</ul>
+{% endblock content %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Football Picks</title>
+	</head>
+	<body>
+		<h1>Football Picks for Week 3</h1>
+		<ul>
+
+            <lh>Name: {{ name }} </lh>
+            <li>Picks: {{ pick.pick1 }}</li>
+            <li>Picks: {{ pick.pick2 }}</li>
+            <li>Picks: {{ pick.pick3 }}</li>
+            <li>Picks: {{ pick.pick4 }}</li>
+            <li>Picks: {{ pick.pick5 }}</li>
+            <li>Picks: {{ pick.pick6 }}</li>
+            <li>Picks: {{ pick.pick7 }}</li>
+            <li>Picks: {{ pick.pick8 }}</li>
+            <li>Picks: {{ pick.pick9 }}</li>
+            <li>Picks: {{ pick.pick10 }}</li>
+            <li>Picks: {{ pick.pick11 }}</li>
+            <li>Picks: {{ pick.pick12 }}</li>
+            <li>Picks: {{ pick.pick13 }}</li>
+            <li>Picks: {{ pick.pick14 }}</li>
+            <li>Picks: {{ pick.pick15 }}</li>
+            <li>Picks: {{ pick.pick16 }}</li>
+		</ul>
+        <a href="{% url 'index' %}">Back to index page</a>
+        <h2>Add your Picks</h2>
+            {% if non_users %}
+            <form action="{ % url 'addpick' pick.id %}" method="post">
+                {% csrf_token %}
+                <select name="users">
+                {% for user in non_users %}
+                    <option value="{{ user.id }}">{{ user }}</option>
+                {% endfor %}
+                </select>
+                <input type="submit" value="Add User"/>
+            </form>
+            {% else %}
+                <div>No users to add.</div>
+            {% endif %}
+	</body>
+</html>
